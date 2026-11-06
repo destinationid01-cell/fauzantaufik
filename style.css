@@ -286,3 +286,49 @@ main > section:first-child { margin-top: 32px; }
   .wa-float a { animation: none; }
   * { transition: none !important; }
 }
+
+/* ============================================================
+   BOTTOM NAVIGASI (ala tema Bello) — hanya tampil di mobile
+   Bar bawah tetap (fixed) warna ungu; tombol tengah WhatsApp
+   merah menonjol dan terangkat; Menu membuka panel dari bawah
+   (checkbox hack, tanpa JavaScript).
+   ============================================================ */
+.bottom-nav, .bnav-sheet, .bnav-toggle { display: none; }
+
+@media (max-width: 768px) {
+  body { padding-bottom: 64px; }
+  .wa-float { bottom: 80px; }
+  .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+    display: flex; align-items: center;
+    background: #4f46b8;
+    box-shadow: 0 -4px 18px rgba(10, 20, 50, .28);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)); }
+  .bnav-item { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2px;
+    color: #c9c3f5; font-size: .68rem; font-weight: 600; line-height: 1.2;
+    padding: 4px 2px; cursor: pointer; }
+  .bnav-item:hover { color: #fff; text-decoration: none; }
+  .bnav-item svg { width: 24px; height: 24px; display: block; }
+  .bnav-item.active { color: #fff; }
+  .bnav-item.active span { border-bottom: 2px solid var(--gold); padding-bottom: 1px; }
+  .bnav-cta { flex: 0 0 auto; width: 58px; height: 58px; margin: 0 6px;
+    border-radius: 50%; background: #ef4444; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transform: translateY(-16px);
+    border: 3px solid #fff;
+    box-shadow: 0 10px 22px rgba(239, 68, 68, .45); }
+  .bnav-cta svg { width: 30px; height: 30px; fill: #fff; }
+  .bnav-cta:hover { background: #dc2626; color: #fff; }
+  .bnav-toggle:checked ~ .bnav-sheet { display: block; }
+  .bnav-sheet { position: fixed; left: 0; right: 0; bottom: 64px; z-index: 65;
+    background: #fff; border-radius: 18px 18px 0 0;
+    box-shadow: 0 -10px 34px rgba(10, 20, 50, .28);
+    max-height: 62vh; overflow-y: auto; }
+  .bnav-sheet-inner { padding: 18px 22px calc(18px + env(safe-area-inset-bottom, 0px)); }
+  .bnav-sheet-title { font-weight: 800; font-size: 1.05rem; margin: 0 0 6px; color: var(--ink); }
+  .bnav-sheet a { display: block; padding: 12px 2px; border-bottom: 1px solid var(--line);
+    color: var(--ink); font-weight: 600; }
+  .bnav-sheet a:hover { color: var(--orange-deep); text-decoration: none; }
+  .bnav-sheet-close { display: block; text-align: center; padding: 14px 2px 4px;
+    color: var(--orange-deep); font-weight: 700; cursor: pointer; }
+}
