@@ -54,3 +54,39 @@ main { padding: 28px 0 40px; }
   h1 { font-size: 1.6rem; }
   .site-header .brand { font-size: 1.3rem; }
 }
+
+/* --- Beranda ala WordPress asli: hero foto + statistik + WA mengambang --- */
+.hero-photo { background: #16324a url("images/Banner2.jpg") center/cover no-repeat;
+  color: #fff; position: relative; }
+.hero-photo::before { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(10,30,55,.82) 0%, rgba(10,30,55,.55) 55%, rgba(10,30,55,.25) 100%); }
+.hero-photo-inner { position: relative; z-index: 1; max-width: 920px; margin: 0 auto;
+  padding: 84px 20px 76px; }
+.hero-kicker { color: #f5a623; letter-spacing: 0.22em; text-transform: uppercase;
+  font-size: 0.85rem; font-weight: bold; margin: 0 0 14px; }
+.hero-photo h1 { color: #fff; font-size: 2.9rem; line-height: 1.15; margin: 0 0 18px; }
+.hero-photo-sub { color: #eef2f7; font-size: 1.15rem; line-height: 1.6; margin: 0 0 24px; }
+.hero-photo-sub strong { color: #fff; }
+.btn-blue { background: #119beb; }
+.btn-blue:hover { background: #0d7ea8; }
+.founder { margin-top: 1.2em; }
+.founder span { color: #6b7280; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 2em 0; text-align: center; }
+.stat { flex: 1 1 160px; background: #fff; border: 1px solid #e8e2d9; border-radius: 8px;
+  padding: 18px 10px; }
+.stat-num { font-size: 2rem; font-weight: bold; color: #e67e22; margin: 0; line-height: 1.2; }
+.stat-label { margin: 0; color: #555; }
+.cta-band { background: #fdf1e7; border: 1px solid #f0d9c0; border-radius: 8px; padding: 24px 26px; }
+.cta-band h2 { border-bottom: none; margin-top: 0; }
+.wa-float { position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  display: flex; flex-direction: column; gap: 10px; }
+.wa-float a { width: 52px; height: 52px; border-radius: 50%; background: #25d366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+.wa-float a:hover { background: #1eb856; text-decoration: none; }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+@media (max-width: 640px) {
+  .hero-photo-inner { padding: 64px 20px 56px; }
+  .hero-photo h1 { font-size: 2rem; }
+  .hero-photo-sub { font-size: 1.05rem; }
+}
