@@ -56,25 +56,55 @@ main > section:first-child { margin-top: 32px; }
   background: var(--header-bg);
   border-bottom: 1px solid #1f1f22; }
 .site-header .wrap { max-width: 1180px; }
-.header-inner { display: flex; align-items: center; gap: 28px; min-height: 64px; }
-.brand { display: flex; align-items: baseline; gap: 8px; color: #fff; flex-shrink: 0; }
+.header-inner { display: flex; align-items: stretch; gap: 28px; min-height: 64px; }
+.brand { display: flex; align-items: baseline; gap: 8px; color: #fff; flex-shrink: 0; align-self: center; }
 .brand:hover { text-decoration: none; }
 .brand-mark { font-family: "Arial Narrow", "Oswald", "Helvetica Neue", Arial, sans-serif;
   font-weight: 800; font-size: 1.4rem; color: var(--red); letter-spacing: .04em; line-height: 1; }
 .brand-text { font-family: "Arial Narrow", "Oswald", "Helvetica Neue", Arial, sans-serif;
   font-weight: 800; font-size: 1.02rem; color: #fff; letter-spacing: .08em;
   text-transform: uppercase; white-space: nowrap; line-height: 1; }
-.main-nav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; align-items: center; }
-.main-nav a { font-family: "Arial Narrow", "Oswald", "Helvetica Neue", Arial, sans-serif;
+.main-nav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; align-items: stretch; }
+.main-nav > a, .nav-drop-btn { font-family: "Arial Narrow", "Oswald", "Helvetica Neue", Arial, sans-serif;
   color: #fff; font-size: .82rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .14em; padding: 8px 10px; white-space: nowrap;
-  transition: color .2s ease; }
-.main-nav a:hover { color: var(--red); text-decoration: none; }
-.main-nav a.active { color: var(--red); }
+  transition: color .2s ease; display: flex; align-items: center; }
+.main-nav > a:hover, .nav-drop-btn:hover { color: var(--red); text-decoration: none; }
+.main-nav > a.active, .nav-drop-btn.active { color: var(--red); }
+
+/* ---------- Dropdown menu header (gaya gym3: gelap, solid, aksen merah) ---------- */
+.nav-drop { position: relative; display: flex; align-items: center; align-self: stretch; }
+.nav-drop-toggle { display: none; }
+.nav-drop-caret { color: var(--red); font-size: .68rem; line-height: 1; cursor: pointer;
+  padding: 8px 2px 8px 0; pointer-events: none; transition: transform .2s ease; }
+.nav-drop-toggle:checked ~ .nav-drop-caret { transform: rotate(180deg); }
+.nav-drop-panel { position: absolute; top: 100%; left: 0; z-index: 90; min-width: 350px;
+  background: #141416; border-top: 3px solid var(--red);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+.nav-drop:hover > .nav-drop-panel, .nav-drop:focus-within > .nav-drop-panel {
+  opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-drop-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px;
+  color: #fff; border-bottom: 1px solid #1f1f22; }
+.nav-drop-item:last-child { border-bottom: 0; }
+.nav-drop-item:hover { background: #1d1d20; text-decoration: none; }
+.nav-drop-icon { flex-shrink: 0; width: 38px; height: 38px; display: flex; align-items: center;
+  justify-content: center; background: rgba(230, 46, 46, .12); color: var(--red); }
+.nav-drop-icon svg { width: 21px; height: 21px; }
+.nav-drop-text { flex: 1; min-width: 0; }
+.nav-drop-text strong { display: block; font-family: "Arial Narrow", "Oswald", "Helvetica Neue", Arial, sans-serif;
+  font-size: .9rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+.nav-drop-text em { display: block; font-style: normal; font-size: .8rem; color: #9aa3ad;
+  margin-top: 2px; white-space: normal; }
+.nav-drop-arrow { color: var(--red); font-weight: 800; transition: transform .2s ease; }
+.nav-drop-item:hover .nav-drop-arrow { transform: translateX(4px); }
+.nav-drop-all { background: #0c0c0e; }
+.nav-drop-all .nav-drop-text strong { color: var(--red); }
 
 /* Burger menu (checkbox hack — tanpa JavaScript) */
 .nav-toggle { display: none; }
-.nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px;
+.nav-burger { display: none; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px;
   padding: 12px 10px; margin-left: auto; }
 .nav-burger span { width: 24px; height: 2px; background: #fff; border-radius: 0;
   transition: transform .25s ease, opacity .2s ease; }
@@ -237,7 +267,16 @@ main > section:first-child { margin-top: 32px; }
     flex-direction: column; align-items: stretch; margin-left: 0;
     padding: 12px 20px 18px; gap: 4px;
     border-bottom: 1px solid #1f1f22; }
-  .main-nav a { padding: 11px 14px; }
+  .main-nav > a, .nav-drop-btn { padding: 11px 14px; }
+  /* Dropdown di mobile: panel statis, dibuka lewat caret (checkbox hack) */
+  .nav-drop { flex-wrap: wrap; align-self: auto; }
+  .nav-drop-btn { flex: 1; }
+  .nav-drop-caret { pointer-events: auto; padding: 11px 14px; font-size: .8rem; }
+  .nav-drop-panel { position: static; min-width: 0; flex: 1 1 100%;
+    opacity: 1; visibility: visible; transform: none; box-shadow: none;
+    border-top: 0; border-left: 3px solid var(--red); background: #17171a;
+    display: none; transition: none; }
+  .nav-drop-toggle:checked ~ .nav-drop-panel { display: block; }
   .nav-toggle:checked ~ .main-nav { display: flex; }
   .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
