@@ -605,25 +605,30 @@ main > section:first-child {
   }
 }
 
-/* Foto Figur Hero */
+/* Foto Figur Hero (Duo Advokat diperbesar gagah & proporsional) */
 .hero-team {
   margin: 0;
   align-self: end;
   line-height: 0;
   overflow: hidden;
   position: relative;
+  aspect-ratio: 16 / 15;
+  max-width: 480px;
+  justify-self: end;
 }
 
 .hero-team img {
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.12));
+  width: 340%;
+  max-width: none;
+  display: block;
+  margin-left: -240%;
+  margin-top: -65%;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 25px rgba(16, 185, 129, 0.2));
   transition: transform 0.4s ease;
 }
 
 .hero-team:hover img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 /* ============================================================
