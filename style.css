@@ -242,6 +242,19 @@ main > section:first-child {
   transform: translateY(-1px);
 }
 
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(212, 160, 23, 0.45));
+  transition: transform 0.25s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.08) rotate(-2deg);
+}
+
 .brand-mark {
   display: inline-flex;
   align-items: center;
@@ -1459,6 +1472,198 @@ main > section:first-child {
 
   .team-card .team-photo {
     height: 300px;
+  }
+}
+
+/* ============================================================
+   HALAMAN ARTIKEL / POSTINGAN (Format Rata Kanan-Kiri & Tipografi Bersih)
+   ============================================================ */
+article p,
+main article p,
+.article-content p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.85;
+  color: #cbd5e1;
+  font-size: 1.04rem;
+  margin-bottom: 1.4em;
+}
+
+article h2,
+main article h2 {
+  font-size: 1.55rem;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  color: var(--text-pure);
+}
+
+article h3,
+main article h3 {
+  font-size: 1.25rem;
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+}
+
+/* ============================================================
+   GALERI PENDAMPINGAN (Modern Photo Grid Showcase)
+   ============================================================ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+  margin: 36px 0;
+}
+
+.gallery-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--emerald-border);
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+}
+
+.gallery-card-thumb {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+  background: #040608;
+}
+
+.gallery-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .gallery-card-thumb img {
+  transform: scale(1.06);
+}
+
+.gallery-card-body {
+  padding: 20px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card-body h3 {
+  font-size: 1.12rem;
+  line-height: 1.45;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-pure);
+}
+
+.gallery-card-body p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.gallery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--emerald-light);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   HALAMAN HUBUNGI KAMI & PROFIL TAMBAHAN
+   ============================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin: 36px 0;
+}
+
+.contact-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.28s ease;
+}
+
+.contact-box:hover {
+  border-color: var(--emerald-border);
+  box-shadow: var(--shadow-glow);
+}
+
+.contact-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--emerald-subtle);
+  color: var(--emerald-light);
+  border: 1px solid var(--emerald-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.contact-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-title {
+  font-size: 1.3rem;
+  color: var(--text-pure);
+  margin: 0 0 10px;
+}
+
+.contact-info {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.step-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--emerald-gradient);
+  color: #042014;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 640px) {
+  .contact-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
 
